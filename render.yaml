@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: parcial2
+    env: python
+    plan: free
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+      python manage.py migrate --noinput
+    startCommand: gunicorn parcial.wsgi:application
+    envVars:
+      - key: SECRET_KEY
+        value: cambia_esto_en_render
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: parcial2-ece4.onrender.com
+      - key: DATABASE_URL
+        sync: false
+      - key: EMAIL_BACKEND
+        value: django.core.mail.backends.console.EmailBackend

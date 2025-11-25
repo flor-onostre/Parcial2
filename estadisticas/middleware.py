@@ -1,4 +1,5 @@
 from .models import Visita
+from django.db import ProgrammingError, OperationalError
 
 
 class VisitaMiddleware:
@@ -9,5 +10,9 @@ class VisitaMiddleware:
         respuesta = self.get_response(request)
         ruta = request.path
         if not ruta.startswith(("/static/", "/media/", "/admin/")):
-            Visita.objects.create(pagina=ruta)
+            try:
+                Visita.objects.create(pagina=ruta)
+            except (ProgrammingError, OperationalError):
+                # Si las migraciones no se han aplicado aún (p.ej. despliegue nuevo), evitamos romper la app.
+                pass
         return respuesta
