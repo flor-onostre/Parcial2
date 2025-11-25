@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Scraper{% endblock %}
+{% block content %}
+<h1 class="h4">Scraping Wikipedia</h1>
+<form class="row g-3 mb-3" method="get">
+    <div class="col-auto">
+        <input class="form-control" type="text" name="q" value="{{ query }}" placeholder="buscar..." required>
+    </div>
+    <div class="col-auto"><button class="btn btn-primary">Buscar</button></div>
+</form>
+{% if error %}
+<div class="alert alert-danger">{{ error }}</div>
+{% endif %}
+{% for r in resultados %}
+    <div class="card p-3 mb-2">
+        <h5>{{ r.titulo }}</h5>
+        {% for s in r.snippets %}<p>{{ s }}</p>{% endfor %}
+        <a class="btn btn-sm btn-outline-info" href="{{ r.url }}" target="_blank">Ver página</a>
+    </div>
+{% empty %}
+    {% if query %}<p>No se encontraron snippets.</p>{% endif %}
+{% endfor %}
+{% endblock %}

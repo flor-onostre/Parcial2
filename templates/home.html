@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+<div class="row align-items-center mb-4">
+    <div class="col-md-7">
+        <div class="card p-4">
+            <h1 class="h3 mb-3">Parcial Django - Playground</h1>
+            <p class="mb-2">Todo en un solo proyecto para practicar login, CRUDs, media, PDF, emails, carrito, API REST, scraping y dashboard.</p>
+            <p class="mb-3 text-muted">Arranca logueandote o creando un usuario, o segui directo a cualquier modulo.</p>
+            <div class="d-flex gap-2">
+                <a class="btn btn-primary" href="/login/">Ingresar</a>
+                <a class="btn btn-outline-light" href="/registro/">Registrate</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="card p-4">
+            <h2 class="h5 mb-3">Accesos rapidos</h2>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action bg-transparent text-light" href="/tareas/">Tareas (FBV)</a>
+                <a class="list-group-item list-group-item-action bg-transparent text-light" href="/tareas_cbv/">Tareas (CBV)</a>
+                <a class="list-group-item list-group-item-action bg-transparent text-light" href="/galeria/">Galeria</a>
+                <a class="list-group-item list-group-item-action bg-transparent text-light" href="/productos/">Carrito</a>
+                <a class="list-group-item list-group-item-action bg-transparent text-light" href="/reportes/">Reportes PDF</a>
+                <a class="list-group-item list-group-item-action bg-transparent text-light" href="/contacto/">Contacto (Email)</a>
+                <a class="list-group-item list-group-item-action bg-transparent text-light" href="/api/libros/">API Libros</a>
+                <a class="list-group-item list-group-item-action bg-transparent text-light" href="/swagger/">Swagger UI</a>
+                <a class="list-group-item list-group-item-action bg-transparent text-light" href="/scraper/">Scraper</a>
+                <a class="list-group-item list-group-item-action bg-transparent text-light" href="/estadisticas/">Dashboard</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

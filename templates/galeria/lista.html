@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Galería{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h4">Galería</h1>
+    <a class="btn btn-success" href="/galeria/subir/">Subir foto</a>
+</div>
+<div class="row">
+    {% for foto in fotos %}
+        <div class="col-md-4 mb-3">
+            <div class="card h-100">
+                <img src="{{ foto.imagen.url }}" class="card-img-top" alt="{{ foto.titulo }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ foto.titulo }}</h5>
+                    <p class="text-muted">{{ foto.creada }}</p>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>No hay fotos todavía.</p>
+    {% endfor %}
+</div>
+{% endblock %}

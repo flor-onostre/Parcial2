@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Reportes{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card p-3 mb-3">
+            <h2 class="h5">Nuevo reporte</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-primary">Guardar</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h2 class="h5">Reportes</h2>
+        <ul class="list-group">
+            {% for r in reportes %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>{{ r.nombre }} ({{ r.fecha }})</span>
+                    <a class="btn btn-sm btn-outline-info" href="/reporte/{{ r.id }}/pdf/">Descargar PDF</a>
+                </li>
+            {% empty %}
+                <li class="list-group-item">Sin reportes.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

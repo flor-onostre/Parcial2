@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Registro{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card p-4">
+            <h2 class="h4 mb-3">Crear cuenta</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">{{ form.username.label }}</label>
+                    {{ form.username }}
+                    {% if form.username.help_text %}<small class="text-light">{{ form.username.help_text }}</small>{% endif %}
+                    {{ form.username.errors }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">{{ form.email.label }}</label>
+                    {{ form.email }}
+                    {{ form.email.errors }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">{{ form.password1.label }}</label>
+                    {{ form.password1 }}
+                    {% if form.password1.help_text %}<small class="text-light">{{ form.password1.help_text }}</small>{% endif %}
+                    {{ form.password1.errors }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">{{ form.password2.label }}</label>
+                    {{ form.password2 }}
+                    {% if form.password2.help_text %}<small class="text-light">{{ form.password2.help_text }}</small>{% endif %}
+                    {{ form.password2.errors }}
+                </div>
+                <button class="btn btn-primary">Registrarme</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

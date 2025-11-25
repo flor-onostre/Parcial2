@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block extra_head %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+{% block content %}
+<h1 class="h4">Estadísticas</h1>
+<div class="row">
+    <div class="col-md-6">
+        <canvas id="visitasDia"></canvas>
+    </div>
+    <div class="col-md-6">
+        <canvas id="paginas"></canvas>
+    </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script>
+const visitasCtx = document.getElementById('visitasDia');
+new Chart(visitasCtx, {
+    type: 'line',
+    data: {
+        labels: {{ labels_dias|safe }},
+        datasets: [{ label: 'Visitas por día', data: {{ data_dias|safe }}, borderColor: '#38bdf8'}]
+    }
+});
+const paginasCtx = document.getElementById('paginas');
+new Chart(paginasCtx, {
+    type: 'bar',
+    data: {
+        labels: {{ labels_paginas|safe }},
+        datasets: [{ label: 'Páginas más visitadas', data: {{ data_paginas|safe }}, backgroundColor: '#4ade80'}]
+    }
+});
+</script>
+{% endblock %}

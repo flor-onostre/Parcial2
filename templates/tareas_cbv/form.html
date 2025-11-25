@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Formulario tarea CBV{% endblock %}
+{% block content %}
+<div class="card p-4">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary">Guardar</button>
+        <a class="btn btn-secondary" href="/tareas_cbv/">Volver</a>
+    </form>
+</div>
+{% endblock %}

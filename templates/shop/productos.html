@@ -1,0 +1,26 @@
+﻿{% extends "base.html" %}
+{% block title %}Productos{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between mb-3 align-items-center">
+    <h1 class="h4">Productos</h1>
+    <div class="d-flex gap-2">
+        <a class="btn btn-outline-info" href="/carrito/">Ver carrito</a>
+        {% if user.is_staff %}
+        <a class="btn btn-success" href="/productos/nuevo/">Agregar producto</a>
+        {% endif %}
+    </div>
+</div>
+<div class="row">
+    {% for p in productos %}
+        <div class="col-md-4 mb-3">
+            <div class="card p-3 h-100">
+                <h5>{{ p.nombre }}</h5>
+                <p class="fs-5">${{ p.precio }}</p>
+                <a class="btn btn-primary" href="/carrito/agregar/{{ p.id }}/">Agregar</a>
+            </div>
+        </div>
+    {% empty %}
+        <p>Agrega productos en admin o con el boton si sos admin.</p>
+    {% endfor %}
+</div>
+{% endblock %}
