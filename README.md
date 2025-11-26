@@ -29,6 +29,10 @@ EMAIL_USE_TLS=True
 EMAIL_HOST_USER=tu_email@gmail.com
 EMAIL_HOST_PASSWORD=tu_app_password
 DEFAULT_FROM_EMAIL=tu_email@gmail.com
+# Brevo (si usas API en vez de SMTP)
+BREVO_API_KEY=tu_api_key_de_brevo
+BREVO_SENDER_EMAIL=remitente@tu_dominio.com
+BREVO_SENDER_NAME=Parcial Django
 ```
 
 ## Migraciones y datos
