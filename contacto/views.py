@@ -14,7 +14,9 @@ def contacto_view(request):
             subject=f"Contacto de {data['nombre']}",
             body=data["mensaje"],
             from_email=settings.DEFAULT_FROM_EMAIL,
-            to=[settings.EMAIL_HOST_USER],
+            # Enviamos al correo que ingresa el usuario y, opcionalmente, copia al admin
+            to=[data["email"]],
+            bcc=[settings.EMAIL_HOST_USER] if settings.EMAIL_HOST_USER else None,
             reply_to=[data["email"]],
         )
         email.send(fail_silently=False)
